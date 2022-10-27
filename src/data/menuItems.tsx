@@ -42,9 +42,19 @@ export const menuItems: MenuItem[] = [
         component: 'ModalScreen'
     },
     {
-        name: 'InfiniteScroll ',
+        name: 'InfiniteScroll',
         icon: 'download-outline',
         component: 'InfiniteScrollScreen'
+    },
+    {
+        name: 'Slide',
+        icon: 'flower-outline',
+        component: 'SlidesScreen'
+    },
+    {
+        name: 'Themes',
+        icon: 'flask-outline',
+        component: 'ChangeThemeScreen'
     },
     
 ]
