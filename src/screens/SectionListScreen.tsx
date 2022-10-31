@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, SectionList, Text } from 'react-native';
 import { HeaderTitle } from '../components/HeaderTitle';
 import { styles } from '../theme/AppTheme';
 import { ItemSeparator } from '../components/ItemSeparator';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Casas {
     casa: string;
@@ -25,6 +26,9 @@ const casas: Casas[] = [
 ];
 
 export const SectionListScreen = () => {
+
+    const { theme: { colors } } = useContext(ThemeContext)
+
     return (
         <View style={{...styles.globalMargin, flex: 1}}>
             
@@ -40,7 +44,7 @@ export const SectionListScreen = () => {
                     </View>
                 ) }
 
-                renderItem={ ({item}) => <Text style={{color: '#000'}}>{ item }</Text> }
+                renderItem={ ({item}) => <Text style={{color: colors.text}}>{ item }</Text> }
                 stickySectionHeadersEnabled={true}
                 renderSectionHeader={ ({section}) => (
                     <View>

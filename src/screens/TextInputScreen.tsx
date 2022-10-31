@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
 import { HeaderTitle } from '../components/HeaderTitle';
 import { styles } from '../theme/AppTheme';
 import { useForm } from '../hooks/useForm';
 import { CustomSwitch } from '../components/CustomSwitch';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 export const TextInputScreen = () => {
 
@@ -13,6 +14,8 @@ export const TextInputScreen = () => {
         phone: '',
         isSubscribed: false
     })
+
+    const { theme: { colors, dividerColor } } = useContext(ThemeContext)
 
     return (
 
@@ -28,18 +31,27 @@ export const TextInputScreen = () => {
                         <HeaderTitle title='TextInputs' />
 
                         <TextInput 
-                            style={style.inputStyle}
+                            style={{
+                                ...style.inputStyle,
+                                borderColor: colors.text,
+                                color: colors.text
+                            }}
                             placeholder='Ingresa tu nombre:'
-                            placeholderTextColor='rgba(0,0,0,0.3)'
+                            placeholderTextColor={dividerColor}
                             autoCorrect={false}  //Mostrar sugerencias de teclado
                             autoCapitalize='words'
                             onChangeText={ (value) => onChange(value, 'name') }
+
                         />
 
                         <TextInput 
-                            style={style.inputStyle}
+                            style={{
+                                ...style.inputStyle,
+                                borderColor: colors.text,
+                                color: colors.text
+                            }}
                             placeholder='Ingresa tu email:'
-                            placeholderTextColor='rgba(0,0,0,0.3)'
+                            placeholderTextColor={dividerColor}
                             autoCorrect={false}  
                             autoCapitalize='none'
                             onChangeText={ (value) => onChange(value, 'email') }
@@ -56,9 +68,13 @@ export const TextInputScreen = () => {
                         <HeaderTitle title={ JSON.stringify( form, null, 5 ) } />
 
                         <TextInput 
-                            style={style.inputStyle}
+                            style={{
+                                ...style.inputStyle,
+                                borderColor: colors.text,
+                                color: colors.text
+                            }}
                             placeholder='Ingresa tu telefono:'
-                            placeholderTextColor='rgba(0,0,0,0.3)'
+                            placeholderTextColor={dividerColor}
                             onChangeText={ (value) => onChange(value, 'phone') }
                             keyboardType='phone-pad'
                         />
@@ -79,7 +95,6 @@ export const TextInputScreen = () => {
 const style = StyleSheet.create({
     inputStyle: {
         borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.3)',
         height: 50,
         paddingHorizontal: 10,
         borderRadius: 10,

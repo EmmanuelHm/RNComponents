@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { View, Modal, Button, Text } from 'react-native';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ThemeContext } from '../context/theme/ThemeContext';
 import { styles } from '../theme/AppTheme';
-import { useState } from 'react';
 
 export const ModalScreen = () => {
 
     const [isVisible, setIsVisible] = useState(false)
-
+    const { theme: { colors, dark } } = useContext(ThemeContext)
 
     return (
         <View style={styles.globalMargin}>
@@ -17,6 +17,7 @@ export const ModalScreen = () => {
             <Button
                 title='Abrir modal'
                 onPress={ () => setIsVisible(true) }
+                color={colors.primary}
             />
 
 
@@ -57,7 +58,7 @@ export const ModalScreen = () => {
                             style={{
                                 fontSize: 20,
                                 fontWeight: 'bold',
-                                color: '#000'
+                                color:  'black'
                             }}
                         >
                             Modal
@@ -67,7 +68,7 @@ export const ModalScreen = () => {
                             style={{
                                 fontSize: 16,
                                 fontWeight: '300',
-                                color: '#000',
+                                color: 'black',
                                 marginVertical: 20
                             }}
                         >
@@ -77,6 +78,8 @@ export const ModalScreen = () => {
                         <Button
                             title='Cerrar'
                             onPress={() => setIsVisible(false) }
+                            color={colors.primary}
+                            
                         />
                     </View>
 
